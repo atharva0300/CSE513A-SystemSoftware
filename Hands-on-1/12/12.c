@@ -39,7 +39,7 @@ int main() {
         printf("File opened in: READ ONLY mode\n");
     else if (accmode == O_WRONLY)
         printf("File opened in: WRITE ONLY mode\n");
-    else if (accmode == O_RDONLY)
+    else if (accmode == O_RDWR)
         printf("File opened in: READ-WRITE mode\n");
     else
         printf("Unknown mode\n");
