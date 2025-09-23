@@ -25,9 +25,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    // reason we use lstat instead of stat : 
-    // stat -> returns info about the target file
-    // lstat -> returns the info about the symbolic link itself
+
     if(lstat(argv[1], &fileStat) == -1){
         perror("lstat");
         exit(EXIT_FAILURE);

@@ -18,7 +18,7 @@ Date: 6th Sept 2025
 // read Time Stamp Counter using inline assembly
 static __inline__ uint64_t rdtsc(void) {
     unsigned int hi, lo;
-    __asm__ volatile("rdtsc" : "=a"(lo), "=d"(hi));
+    __asm__ volatile("rdtsc" : "=a"(lo), "=d"(hi)); // eax and edx
     return ((uint64_t)hi << 32) | lo;
 }
 

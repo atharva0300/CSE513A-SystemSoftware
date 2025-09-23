@@ -21,10 +21,10 @@ int main() {
     ssize_t bytes_written;
     off_t offset;
     char buf1[] = "This is Atharva Pingale.";  // >10 bytes
-    char buf2[] = "From IIITB.\n";             // >=10 bytes
+    char buf2[] = "From I";             // <10 bytes
 
-    size_t buf1_length = strlen(buf1);
-    size_t buf2_length = strlen(buf2); 
+    // size_t buf1_length = strlen(buf1);
+    // size_t buf2_length = strlen(buf2); 
 
     // Open file in read-write mode, create if not exists, truncate
     fd = open("lseek_file.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
@@ -34,8 +34,8 @@ int main() {
     }
 
     // write first 10 bytes of buf1
-    bytes_written = write(fd, buf1, buf1_length);
-    if (bytes_written != buf1_length) {
+    bytes_written = write(fd, buf1, 10);
+    if (bytes_written != 10) {
         perror("write buf1");
         close(fd);
         exit(EXIT_FAILURE);
@@ -51,8 +51,8 @@ int main() {
     printf("New file offset after lseek: %lld\n", (long long)offset);
 
     // write next 10 bytes of buf2 at new offset
-    bytes_written = write(fd, buf2, buf2_length);
-    if (bytes_written != buf2_length) {
+    bytes_written = write(fd, buf2, 10);
+    if (bytes_written != 10) {
         perror("write buf2");
         close(fd);
         exit(EXIT_FAILURE);
@@ -82,11 +82,10 @@ Data written successfully to lseek_file.txt
 
 atharva0300@systems-software:~/Desktop/Github/systems-software-programs/hands-on-1/10$ cat lseek_file.txt
 This is Atharva Pingale.From IIITB.
-atharva0300@systems-software:~/Desktop/Github/systems-software-programs/hands-on-1/10$ od -c lseek_file.txt
-0000000   T   h   i   s       i   s       A   t   h   a   r   v   a    
-0000020   P   i   n   g   a   l   e   .  \0  \0  \0  \0  \0  \0  \0  \0
-0000040  \0  \0   F   r   o   m       I   I   I   T   B   .  \n
-0000056
+$ od -c lseek_file.txt
+0000000   T   h   i   s       i   s       A   t  \0  \0  \0  \0  \0  \0
+0000020  \0  \0  \0  \0   F   r   o   m       I  \0   T   h   i
+0000036
 
 
 */

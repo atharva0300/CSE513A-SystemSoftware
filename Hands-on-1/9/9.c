@@ -39,7 +39,7 @@ int main() {
     printf("UID: %d\n", fileStat.st_uid);
     printf("GID: %d\n", fileStat.st_gid);
     printf("Size: %ld bytes\n", (long)fileStat.st_size);
-    printf("Block size: %ld bytes\n", (long)fileStat.st_blksize);
+    printf("Block size: %ld bytes\n", (long)fileStat.st_blksize);   // not same as the FS block size
     printf("Number of blocks: %ld\n", (long)fileStat.st_blocks);
     printf("Time of last access: %s", ctime(&fileStat.st_atime));
     printf("Time of last modification: %s", ctime(&fileStat.st_mtime));

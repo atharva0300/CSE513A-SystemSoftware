@@ -22,7 +22,7 @@ int main() {
     FD_SET(STDIN_FILENO, &readfds); // Add STDIN (fd=0) to the set
 
     timeout.tv_sec = 10;        // Wait for 10 seconds
-    timeout.tv_usec = 0;        // No microseconds
+    timeout.tv_usec = 0;        //  microseconds
 
     printf("Waiting for input on STDIN for 10 seconds...\n");
     printf("Type something and press Enter, or wait for timeout.\n");

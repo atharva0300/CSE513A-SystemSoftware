@@ -92,6 +92,5 @@ lrwx------ 1 atharva0300 atharva0300 64 Sep  6 22:25 7 -> /home/atharva0300/Desk
 
 
 
-comment => the number - 0,1,103,2,3,4,40... are the file descriptors
 
 */

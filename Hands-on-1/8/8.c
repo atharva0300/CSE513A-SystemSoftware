@@ -13,12 +13,14 @@ Date: 6th Sept 2025
 #include <stdlib.h>  
 #include <stdio.h>   
 
-#define BUFFER_SIZE 1  // reading one character at a time so that we can deect a new line (/n)
+#define MAX_LINE 1024  // buffer for one line
 
 int main() {
     int fd;
     char ch;
     ssize_t bytesRead;
+    char line[MAX_LINE];
+    int pos = 0;
 
     const char *filename = "file.txt";
 
@@ -29,10 +31,22 @@ int main() {
         exit(1);
     }
 
-    // reading character by character
-    while ((bytesRead = read(fd, &ch, BUFFER_SIZE)) > 0) {
-        // writing each character immediately
-        if (write(STDOUT_FILENO, &ch, BUFFER_SIZE) != BUFFER_SIZE) {
+    while ((bytesRead = read(fd, &ch, 1)) > 0) {
+        line[pos++] = ch;
+
+        if (ch == '\n' || pos == MAX_LINE - 1) {
+            if (write(STDOUT_FILENO, line, pos) != pos) {
+                perror("Error writing to STDOUT");
+                close(fd);
+                exit(1);
+            }
+            pos = 0; 
+        }
+    }
+
+    // note : flush remaining characters if file does not end with '\n'
+    if (pos > 0) {
+        if (write(STDOUT_FILENO, line, pos) != pos) {
             perror("Error writing to STDOUT");
             close(fd);
             exit(1);
@@ -46,6 +60,7 @@ int main() {
     close(fd);
     return 0;
 }
+
 
 
 /*
