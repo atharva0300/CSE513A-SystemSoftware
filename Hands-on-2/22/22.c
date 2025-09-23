@@ -9,15 +9,6 @@ Date: 23rd Sept 2025
 */
 
 
-/*
-==============================
-Name: 22_fifo_select.c
-Author: Atharva Ratnadeep Pingale
-Description: Wait for data in FIFO using select() for 10 seconds
-Date: 23rd Sept 2025
-==============================
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
