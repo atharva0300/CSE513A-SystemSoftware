@@ -47,5 +47,25 @@ int main() {
     printf("ITIMER_VIRTUAL set for 10 sec + 10 µs...\n");
 
     // Burn CPU so virtual time elapses
-    while (1);  
+    volatile unsigned long i = 0;
+    while (1) {
+        i++;  // ensure the compiler doesn't optimize this away
+    }
+
+    return 0;
 }
+
+
+
+/*
+OUTPUT : 
+==========================
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/1$ g++ 1.b.c -o 1.b
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/1$ ./1.b
+ITIMER_VIRTUAL set for 10 sec + 10 µs...
+ITIMER_VIRTUAL expired! Signal: 26
+ITIMER_VIRTUAL expired! Signal: 26
+^C
+
+
+*/

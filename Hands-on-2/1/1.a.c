@@ -54,3 +54,18 @@ int main() {
 }
 
 
+/*
+OUTPUT : 
+=======================
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/1$ ./1.a
+ITIMER_REAL set for 10 sec + 10 µs...
+ITIMER_REAL expired! Signal: 14
+ITIMER_REAL expired! Signal: 14
+ITIMER_REAL expired! Signal: 14
+ITIMER_REAL expired! Signal: 14
+ITIMER_REAL expired! Signal: 14
+^C
+
+
+
+*/
