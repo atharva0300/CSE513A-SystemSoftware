@@ -16,17 +16,23 @@ Date: 23rd Sept 2025
 void* thread_function(void* arg) {
     int id = *(int*)arg;
     printf("Hello from thread %d\n", id);
+    free(arg);  // Free the allocated memory
     return NULL;
 }
 
 int main(void) {
     pthread_t threads[3];
-    int thread_ids[3];
     int i;
 
     for (i = 0; i < 3; i++) {
-        thread_ids[i] = i + 1;  // Thread IDs: 1, 2, 3
-        if (pthread_create(&threads[i], NULL, thread_function, &thread_ids[i]) != 0) {
+        int *thread_id = new int;
+        if (!thread_id) {
+            perror("malloc");
+            exit(EXIT_FAILURE);
+        }
+        *thread_id = i + 1;  // Thread IDs: 1, 2, 3
+
+        if (pthread_create(&threads[i], NULL, thread_function, thread_id) != 0) {
             perror("pthread_create");
             exit(EXIT_FAILURE);
         }
@@ -41,16 +47,14 @@ int main(void) {
     return 0;
 }
 
-
 /*
 OUTPUT : 
 =========================
-atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/6$ g++ 6.c -o 6 
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/6$ g++ 6.c -o 6
 atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/6$ ./6
 Hello from thread 1
-Hello from thread 2
 Hello from thread 3
+Hello from thread 2
 All threads finished.
-
 
 */

@@ -58,7 +58,12 @@ int main() {
 /*
 OUTPUT : 
 ===========================
-
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/1$ g++ 1.c.c -o 1.c 
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/1$ ./1.c 
+ITIMER_PROF set for 10 sec + 10 µs...
+ITIMER_PROF expired! Signal: 27
+ITIMER_PROF expired! Signal: 27
+^C
 
 
 */

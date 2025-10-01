@@ -32,3 +32,27 @@ int main(int argc, char *argv[]) {
     printf("SIGSTOP sent.\n");
     return 0;
 }
+
+
+
+/*
+OUTPUT: 
+===========================
+TERMINAL 1 => 
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/13$ g++ 13.program1.c -o 13.program1
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/13$ ./13.program1
+signal(SIGSTOP) failed: Invalid argument
+PID = 12011. Waiting... (try sending SIGSTOP from another process)
+
+[1]+  Stopped                 ./13.program1
+
+
+TERMINAL 2 => 
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/13$ g++ 13.program2.c -o 13.program2
+atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/13$ ./13.program2 12011
+Sending SIGSTOP to PID 12011
+SIGSTOP sent.
+
+
+
+*/

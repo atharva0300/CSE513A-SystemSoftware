@@ -18,6 +18,7 @@ mkfifo myfifo2
 ls -l myfifo2
 
 
-
+# OUTPUT 
+# ==============================
 # atharva0300@systems-software:~/Desktop/Github/CSE513A-SystemSoftware/Hands-on-2/19$ bash 19.b.sh 
 # prw-rw-r-- 1 atharva0300 atharva0300 0 Sep 23 13:44 myfifo2
